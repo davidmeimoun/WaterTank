@@ -88,12 +88,12 @@ namespace WaterTank
         }
 
 
-        private void FillContainerAtoB(ref int firstContainer, ref int secondContainer, int jugBMax)
+        private void FillContainerAtoB(ref int firstContainer, ref int secondContainer, int containerBMax)
         {
-            while (!isContainerEmpty(firstContainer) && !isFullContainer(secondContainer, jugBMax))
+            while (!isContainerEmpty(firstContainer) && !isFullContainer(secondContainer, containerBMax))
             {
-                AddAGallon(ref secondContainer, jugBMax);
-                RemoveAGallon(ref firstContainer);
+                addWater(ref secondContainer, containerBMax);
+                removeWater(ref firstContainer);
             }
         }
 
@@ -112,7 +112,7 @@ namespace WaterTank
             return container == 0;
         }
 
-        private void RemoveAGallon(ref int container)
+        private void removeWater(ref int container)
         {
             container -= 1;
             if (container < 0)
@@ -121,7 +121,7 @@ namespace WaterTank
             }
         }
 
-        private void AddAGallon(ref int container, int containerMax)
+        private void addWater(ref int container, int containerMax)
         {
             container += 1;
             if (container > containerMax)
