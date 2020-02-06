@@ -4,10 +4,10 @@ using System.Numerics;
 
 namespace WaterTank
 {
-   public class Solver
+    public class Solver
     {
-      
-        public static void solve( WaterTankModel waterTank)
+
+        public static void solve(WaterTankModel waterTank)
         {
             List<String> path = new List<String>();
             if (isPossible(waterTank))
@@ -27,7 +27,7 @@ namespace WaterTank
                     }
                     else if (!isContainerEmpty(waterTank.FirstContainer) && canAddWater(waterTank.SecondContainer, waterTank.MaxSecondContainer))
                     {
-                        FillContainerAtoB(waterTank.FirstContainer,  waterTank.SecondContainer, waterTank.MaxSecondContainer);
+                        FillContainerAtoB(ref waterTank, waterTank.MaxSecondContainer);
                         path.Add("A -> B : (" + waterTank.FirstContainer + "," + waterTank.SecondContainer + ")");
                     }
                     else if (!isContainerEmpty(waterTank.FirstContainer) && isFullContainer(waterTank.SecondContainer, waterTank.MaxSecondContainer))
@@ -45,7 +45,7 @@ namespace WaterTank
             }
         }
 
-        private static  bool isPossible(WaterTankModel waterTank)
+        private static bool isPossible(WaterTankModel waterTank)
         {
 
             double gcd = double.Parse(BigInteger.GreatestCommonDivisor(waterTank.MaxFirstContainer, waterTank.MaxSecondContainer).ToString());
@@ -69,12 +69,12 @@ namespace WaterTank
         }
 
 
-        private static void FillContainerAtoB( int FirstContainer,  int SecondContainer, int containerBMax)
+        private static void FillContainerAtoB(ref WaterTankModel model, int containerBMax)
         {
-            while (!isContainerEmpty(FirstContainer) && !isFullContainer(SecondContainer, containerBMax))
+            while (!isContainerEmpty(model.FirstContainer) && !isFullContainer(model.SecondContainer, containerBMax))
             {
-                addWater( SecondContainer, containerBMax);
-                removeWater( FirstContainer);
+                addWater(ref model);
+                removeWater(ref model);
             }
         }
 
@@ -93,21 +93,21 @@ namespace WaterTank
             return container == 0;
         }
 
-        private static void removeWater( int container)
+        private static void removeWater(ref WaterTankModel model)
         {
-            container -= 1;
-            if (container < 0)
+            model.FirstContainer -= 1;
+            if (model.FirstContainer < 0)
             {
-                container = 0;
+                model.FirstContainer = 0;
             }
         }
 
-        private static void addWater( int container, int containerMax)
+        private static void addWater(ref WaterTankModel model)
         {
-            container += 1;
-            if (container > containerMax)
+            model.SecondContainer += 1;
+            if (model.SecondContainer > model.MaxSecondContainer)
             {
-                container = containerMax;
+                model.SecondContainer = model.MaxSecondContainer;
             }
         }
 

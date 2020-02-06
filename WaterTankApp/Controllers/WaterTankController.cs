@@ -11,7 +11,7 @@ namespace WaterTankApp.Controllers
     public class WaterTankController : ApiController
     {
         [Route("api/watertank/{containerA}/{containerB}/{numberOfLiter}")]
-        public List<String> GetAllSteps (int containerA,int containerB, int numberOfLiter)
+        public List<String> GetAllSteps(int containerA, int containerB, int numberOfLiter)
         {
             WaterTankModel model = new WaterTankModel(containerA, containerB, numberOfLiter);
             Solver.solve(model);
