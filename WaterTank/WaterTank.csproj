@@ -46,7 +46,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WaterTankSolver.cs" />
+    <Compile Include="Solver.cs" />
+    <Compile Include="WaterTankModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
