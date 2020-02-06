@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WaterTank
 {
-    class WaterTank
+   public class WaterTankSolver
     {
         private int firstContainer;
         private int secondContainer;
@@ -16,7 +13,9 @@ namespace WaterTank
         private int maxSecondContainer;
         private List<String> pathSolve;
 
-        public WaterTank(int maxFirstContainer, int maxSecondContainer, int litterResearch)
+        public List<string> PathSolve { get => pathSolve; set => pathSolve = value; }
+
+        public WaterTankSolver(int maxFirstContainer, int maxSecondContainer, int litterResearch)
         {
             this.firstContainer = 0;
             this.secondContainer = 0;
@@ -26,7 +25,7 @@ namespace WaterTank
         }
 
 
-        public void Solve()
+        public void solve()
         {
             List<String> path = new List<String>();
             if (isPossible())
@@ -60,15 +59,15 @@ namespace WaterTank
             {
                 path.Add("No Solution");
                 pathSolve = path;
+                return;
             }
         }
 
         public bool isPossible()
         {
 
-            var d = BigInteger.GreatestCommonDivisor(maxFirstContainer, maxSecondContainer);
-
-            var number = litterResearch / d;
+            double gcd = double.Parse(BigInteger.GreatestCommonDivisor(maxFirstContainer, maxSecondContainer).ToString());
+            double number = litterResearch / gcd;
             if (number % 1 == 0)
             {
                 return true;

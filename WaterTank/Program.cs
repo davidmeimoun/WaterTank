@@ -12,9 +12,9 @@ namespace WaterTank
         {
             if (args.Length == 3)
             {
-                WaterTank wt = new WaterTank(int.Parse(args[0]), int.Parse(args[1]), int.Parse(args[2]));
-                wt.Solve();
-                wt.print();
+                WaterTankSolver waterTank = new WaterTankSolver(int.Parse(args[0]), int.Parse(args[1]), int.Parse(args[2]));
+                waterTank.solve();
+                waterTank.print();
                 Console.ReadLine();
             }
             else
