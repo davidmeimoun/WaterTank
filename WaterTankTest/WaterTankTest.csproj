@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WaterTank\WaterTank.csproj">
+    <ProjectReference Include="..\WaterTank\WaterTankConsole.csproj">
       <Project>{a1788567-1886-4659-afb7-f0a1eb504b87}</Project>
-      <Name>WaterTank</Name>
+      <Name>WaterTankConsole</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
